@@ -14,7 +14,6 @@ import os
 from PIL import Image
 import textwrap
 
-
 # Enregistrer la police Arial
 arial_font_path = r'C:\Windows\Fonts\Arial.ttf'
 pdfmetrics.registerFont(TTFont('Arial', arial_font_path))
