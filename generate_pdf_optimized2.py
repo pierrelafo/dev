@@ -52,7 +52,20 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	# Ajouter le titre
 	c.setFillColorRGB(*custom_color2)
 	#c.setFont("Arial", 20)
-	c.drawCentredString(page_width/2, 680, f"360° de {prenom} {nom}")
+	#c.drawCentredString(page_width/2, 680, f"360° de {prenom} {nom}")
+	# Initialiser les styles pour le titre de la section PDF
+	styles = getSampleStyleSheet()
+	style = styles["BodyText"]
+	style.alignment = TA_CENTER
+	style.fontSize = 20
+	style.textColor = colors.HexColor("#365B6D")
+	
+	# Titre pour la section agrégée
+	text_open = f"<b>360° de {prenom} {nom}</b>"
+	paragraph = Paragraph(text_open, style)
+	paragraph_width, paragraph_height = paragraph.wrap(490, 0)
+	y_position = y_position_init - paragraph_height
+	paragraph.drawOn(c, 50, y_position)
 	
 	#	#	#	#	#	#	#	#   Debut Pragraphe	#	#	#	#	#	#	#	#	#	#
 	#Ajouter le paragraphe de 1ere page
