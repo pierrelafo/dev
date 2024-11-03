@@ -64,8 +64,7 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	text_open = f"<b>360° de {prenom} {nom}</b>"
 	paragraph = Paragraph(text_open, style)
 	paragraph_width, paragraph_height = paragraph.wrap(490, 0)
-	y_position = y_position_init - paragraph_height
-	paragraph.drawOn(c, 50, y_position)
+	paragraph.drawOn(c, 50, 680)
 	
 	#	#	#	#	#	#	#	#   Debut Pragraphe	#	#	#	#	#	#	#	#	#	#
 	#Ajouter le paragraphe de 1ere page
