@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from generate_pdf_optimized2 import generate_pdf_with_title_and_comments, hex_to_rgb
+from generate_pdf_optimized3 import generate_pdf_with_title_and_comments, hex_to_rgb
 from tempfile import NamedTemporaryFile
 
 # Texte et couleurs personnalisés
@@ -15,8 +15,8 @@ first_page_text = (
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Identifier les éventuels changements à mettre en œuvre<br/>"
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Mettre en place un ou plusieurs plans d’action<br/><br/><br/>"
     "<u>L’échelle de mesure utilisée est :</u><br/>"
-    "Tout à fait d’accord : 10<br/>"
-    "Pas du tout d’accord : 0"
+    "Tout à fait d’accord : 5<br/>"
+    "Pas du tout d’accord : 1"
 )
 text_encadre = (
     "Attention ! Il est important de garder à l'esprit que les personnes sollicitées n'ont pas été formées à l’évaluation. C'est pourquoi, il est primordial de garder une certaine distance et de se concentrer sur les tendances et les points qui reviennent dans les données collectées."
