@@ -54,7 +54,7 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	# Ajouter le titre
 	c.setFillColorRGB(*custom_color2)
 	#c.setFont("Arial", 20)
-	c.drawCentredString(page_width/2, 680, f"360° de {prenom} {nom}")
+	#c.drawCentredString(page_width/2, 680, f"360° de {prenom} {nom}")
 	# Initialiser les styles pour le titre de la section PDF
 	styles = getSampleStyleSheet()
 	style = styles["BodyText"]
