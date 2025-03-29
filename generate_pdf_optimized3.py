@@ -1,4 +1,4 @@
-import pandas as pd
+﻿import pandas as pd
 import matplotlib.pyplot as plt
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -43,7 +43,7 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	start_col = questions_sheet_1[questions_sheet_1.str.contains("Je suis à l'aise dans l'échange", case=False, na=False)].index[0]
 	end_col = questions_sheet_1[questions_sheet_1.str.contains("Je prends des initiatives", case=False, na=False)].index[0]
 
-	output_pdf_path = f"./UP-CARRIERE 360 {prenom} {nom}.pdf"
+	output_pdf_path = f"{pdf_name}"
 	
 	# Initialiser le canvas
 	c = canvas.Canvas(output_pdf_path, pagesize=A4)
@@ -55,6 +55,29 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	c.setFillColorRGB(*custom_color2)
 	c.setFont("Arial", 20)
 	c.drawCentredString(page_width/2, 680, f"360° de {prenom} {nom}")
+	# Initialiser les styles pour le titre de la section PDF
+	styles = getSampleStyleSheet()
+	style = styles["BodyText"]
+	style.alignment = TA_CENTER
+	style.fontSize = 20
+	style.textColor = colors.HexColor("#365B6D")
+	
+	# Titre pour la section agrégée
+	text_open = f"<b>360° de {prenom} {nom}</b>"
+	paragraph = Paragraph(text_open, style)
+	paragraph_width, paragraph_height = paragraph.wrap(490, 0)
+	paragraph.drawOn(c, 50, 680)                                                         
+                               
+                           
+                            
+                    
+                                             
+ 
+                                  
+                                              
+                                        
+                                                           
+                             
 	
 	#	#	#	#	#	#	#	#   Debut Pragraphe	#	#	#	#	#	#	#	#	#	#
 	#Ajouter le paragraphe de 1ere page
@@ -148,6 +171,7 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 			previous_category = current_category
 	
 		# Obtenir les scores de chaque question
+                                                                              
 		evaluators_scores = pd.to_numeric(sheet_2.iloc[:, idx+2], errors='coerce')
 		average_evaluators_score = evaluators_scores.mean()
 		auto_evaluation_score = pd.to_numeric(sheet_1.iloc[0, idx], errors='coerce')
@@ -253,6 +277,76 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 
 	for idx_col in range(42,51):
 		y_position=generate_question_ouverte(c,idx_col,y_position,y_position_init,add_header_image,sheet_2,sheet_1,categories_2)
+                                              
+                        
+                                                           
+                                        
+                                                                       
+                                                      
+                                    
+ 
+                                                      
+                     
+                                              
+ 
+                       
+                                                                      
+                                                                        
+                                                        
+                                    
+                                                                                
+               
+                      
+                               
+
+                                       
+                 
+                     
+                                              
+                      
+                                                                        
+                                        
+                                                                       
+                                                     
+                                    
+ 
+                                                                    
+                    
+                                              
+                              
+                                                                      
+                                                                        
+                                                       
+                                    
+                     
+               
+                               
+   
+                                      
+             
+                    
+                             
+ 
+                     
+                                              
+                      
+                                                                                                                  
+                                        
+                                                                       
+                                                     
+                                    
+ 
+                                                              
+                    
+                                              
+                           
+                                                                      
+                                                                        
+                                                       
+                                    
+                     
+               
+                               
 
 	#	#  Les compétences	#	#	
 	c.showPage()
@@ -555,7 +649,7 @@ def image_pdf(img_path,page_width,y_position,c,y_position_init,add_header_image)
 	return y_position
 
 # Exemple d'appel
-#input_excel_path = r"C:\Users\Lafontaine\OneDrive - Lafontaine Consulting\Nouveau\xls_to_pdf\fichier_excel.xlsx"
+input_excel_path = r"C:\Users\Lafontaine\OneDrive - Lafontaine Consulting\Nouveau\xls_to_pdf\fichier_excel.xlsx"
 first_page_text = "Ce rapport 360° est <b>confidentiel</b> et a été conçu afin de vous fournir une analyse détaillée des informations transmises par les personnes que vous avez sollicitées.<br/><br/>" \
 				  "Il est à la fois <b>une photographie et un outil de progression</b>.<br/><br/>" \
 				  "Grâce à celui-ci, vous allez pouvoir mettre en parallèle votre perception et vous rendre compte qu’elle peut <b>différer avec celle de votre environnement</b>. Le 360° est une démarche constructive, orientée vers le plus d’objectivité et en toute bienveillance.<br/><br/>" \
@@ -576,4 +670,6 @@ image_path = r".\util\Logo simple_up_carriere.jpg"
 custom_color1 = hex_to_rgb("#61A6AB")
 custom_color2 = hex_to_rgb("#365B6D")
 
-generate_pdf_with_title_and_comments(input_excel_path, first_page_text, image_path,text_encadre)
+#generate_pdf_with_title_and_comments(input_excel_path, first_page_text, image_path,text_encadre)
+
+                                                                                                           
