@@ -405,7 +405,7 @@ def generate_overall_bar_chart(aggregated_data, c, page_width, y_position, image
 	ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=2)
 	ax.set_xlim(1, 5)
 	plt.tight_layout()
-	plt.xticks(np.arange(1, 6, 1))
+	plt.xticks(np.arange(0.9, 6, 1))
 
 	# Sauvegarder le graphique et l'ajouter au PDF
 	img_path = "./tmp/overall_horizontal_chart.png"
@@ -472,7 +472,7 @@ def generate_top_5_evaluation(input_excel_path,page_width,y_position,c,y_positio
 	
 	plt.yticks(indices, wrapped_labels,fontsize=8)
 	plt.title(titre,fontsize=10)
-	plt.xticks(np.arange(1, 6, 1))
+	plt.xticks(np.arange(0.9, 6, 1))
 	plt.xlabel('Score')
 	plt.gca().invert_yaxis()  # Inverser l'ordre pour afficher la meilleure moyenne en haut
 	plt.tight_layout()
@@ -502,7 +502,7 @@ def generate_top_5_competences(input_excel_path,page_width,y_position,c,y_positi
 	ax.barh(indices, top_5_questions, height=bar_width, color=color2, zorder=2) 
 	plt.yticks(indices, wrapped_labels,fontsize=8)
 	plt.title(titre,fontsize=10)
-	plt.xticks(np.arange(1, 6, 1))
+	plt.xticks(np.arange(0.9, 6, 1))
 	plt.xlabel('Score')
 	plt.gca().invert_yaxis()  # Inverser l'ordre pour afficher la meilleure moyenne en haut
 	plt.tight_layout()  
@@ -540,7 +540,7 @@ def generate_grouped_bar_chart(section_data, section_title, c, page_width, y_pos
 	# Définir les étiquettes et le titre
 	ax.set_yticks(indices)
 	ax.set_yticklabels(questions)
-	ax.set_xlim(1, 5)
+	ax.set_xlim(0.9, 5)
 	ax.set_xlabel("Score (sur 5)")
 	ax.set_title(f"{section_title}")
 	ax.grid(axis='x', color='#F2F1EC', linestyle='-', linewidth=0.7, zorder=1)
