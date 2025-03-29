@@ -403,9 +403,9 @@ def generate_overall_bar_chart(aggregated_data, c, page_width, y_position, image
 	ax.set_title("Comparaison agrégée des scores par catégorie", fontsize=12)
 	ax.set_xlabel("Score moyen")
 	ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=2)
-	ax.set_xlim(1, 5)
+	ax.set_xlim(0.9, 5)
 	plt.tight_layout()
-	plt.xticks(np.arange(0.9, 6, 1))
+	plt.xticks(np.arange(1, 6, 1))
 
 	# Sauvegarder le graphique et l'ajouter au PDF
 	img_path = "./tmp/overall_horizontal_chart.png"
@@ -464,7 +464,7 @@ def generate_top_5_evaluation(input_excel_path,page_width,y_position,c,y_positio
 	#ax.barh(indices, top_5_questions, height=bar_width, color=color2, zorder=2) 
 	ax.set_yticks(indices)
 	ax.set_yticklabels(top_5_questions)
-	ax.set_xlim(1, 5)
+	ax.set_xlim(0.9, 5)
 	ax.set_xlabel("Score (sur 5)")
 	ax.set_title(f"{titre}")
 	ax.grid(axis='x', color='#F2F1EC', linestyle='-', linewidth=0.7, zorder=1)
@@ -472,7 +472,7 @@ def generate_top_5_evaluation(input_excel_path,page_width,y_position,c,y_positio
 	
 	plt.yticks(indices, wrapped_labels,fontsize=8)
 	plt.title(titre,fontsize=10)
-	plt.xticks(np.arange(0.9, 6, 1))
+	plt.xticks(np.arange(1, 6, 1))
 	plt.xlabel('Score')
 	plt.gca().invert_yaxis()  # Inverser l'ordre pour afficher la meilleure moyenne en haut
 	plt.tight_layout()
@@ -497,12 +497,12 @@ def generate_top_5_competences(input_excel_path,page_width,y_position,c,y_positi
 	indices = [i * spacing for i in range(len(top_5_questions))]
 	fig, ax = plt.subplots(figsize=(8, 5 * 0.70))
 	fig.patch.set_facecolor('#F2F1EC')
-	ax.set_xlim(1, 5)
+	ax.set_xlim(0.9, 5)
 	ax.grid(axis='x', color='#F2F1EC', linestyle='-', linewidth=0.7, zorder=1)
 	ax.barh(indices, top_5_questions, height=bar_width, color=color2, zorder=2) 
 	plt.yticks(indices, wrapped_labels,fontsize=8)
 	plt.title(titre,fontsize=10)
-	plt.xticks(np.arange(0.9, 6, 1))
+	plt.xticks(np.arange(1, 6, 1))
 	plt.xlabel('Score')
 	plt.gca().invert_yaxis()  # Inverser l'ordre pour afficher la meilleure moyenne en haut
 	plt.tight_layout()  
