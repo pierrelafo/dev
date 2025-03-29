@@ -24,7 +24,7 @@ def hex_to_rgb(hex_color):
 	hex_color = hex_color.lstrip('#')
 	return tuple(int(hex_color[i:i+2], 16) / 255.0 for i in (0, 2, 4))
 
-def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, image_path,text_encadre):
+def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, image_path,text_encadre, pdf_name):
 	def add_header_image(c):
 		c.drawImage(image_path, (page_width - 102) / 2, page_height - 50, width=102, height=40)
 	
