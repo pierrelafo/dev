@@ -242,112 +242,6 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	# Générer un graphique pour la dernière section restante
 	if section_data:
 		generate_grouped_bar_chart(section_data, previous_category, c, page_width, y_position, image_height, custom_color1, custom_color2, add_header_image,y_position_init)
-
-	#	#	#	#	#	#	#	#   Debut réponses ouvertes	#	#	#	#	#	#	#	#	#	#
-	#force_col = 44  # Colonne AS
-	#amelioration_col = 45  # Colonne AT
-	#evolution_col = 56  # Colonne AU
-	c.showPage()
-	add_header_image(c)
-	
-	# Titre question ouvertes
-	styles = getSampleStyleSheet()
-	style = styles["BodyText"]  # Utiliser le style BodyText, ou ajustez comme vous le souhaitez
-	style.alignment = TA_CENTER
-	style.fontSize = 14 
-	style.textColor = colors.HexColor("#365B6D") 
-	paragraph_width = 490  
-	text_open = "<b>Analyse qualitative - Questions ouvertes</b><br/><br/>"
-	paragraph = Paragraph(text_open, style)
-	paragraph_width, paragraph_height = paragraph.wrap(paragraph_width, 0)
-	paragraph.drawOn(c, 50, y_position_init-paragraph_height)  
-	y_position=y_position_init-paragraph_height-20
-
-	# Paragraphe explication questions ouvertes
-	style.alignment = TA_LEFT
-	style.fontSize = 10  
-	style.textColor = colors.HexColor("#61A6AB") 
-	paragraph_width = 490  
-	text_open = "<i>Les commentaires repris dans cette section ont été écrits tels quels par les personnes sollicitées. Ils n'ont subi aucune modification, n'ont pas été triés ou classés d'une quelconque manière. " \
-				"Si certains commentaires apparaissent plusieurs fois, cela signifie que plusieurs personnes ont fait le même commentaire.</i><br/><br/><br/>"
-	paragraph = Paragraph(text_open, style)
-	paragraph_width, paragraph_height = paragraph.wrap(paragraph_width, 0)
-	paragraph.drawOn(c, 50, y_position-paragraph_height)
-	y_position -= (paragraph_height+10)
-
-	for idx_col in range(42,51):
-		y_position=generate_question_ouverte(c,idx_col,y_position,y_position_init,add_header_image,sheet_2,sheet_1,categories_2)
-                                              
-                        
-                                                           
-                                        
-                                                                       
-                                                      
-                                    
- 
-                                                      
-                     
-                                              
- 
-                       
-                                                                      
-                                                                        
-                                                        
-                                    
-                                                                                
-               
-                      
-                               
-
-                                       
-                 
-                     
-                                              
-                      
-                                                                        
-                                        
-                                                                       
-                                                     
-                                    
- 
-                                                                    
-                    
-                                              
-                              
-                                                                      
-                                                                        
-                                                       
-                                    
-                     
-               
-                               
-   
-                                      
-             
-                    
-                             
- 
-                     
-                                              
-                      
-                                                                                                                  
-                                        
-                                                                       
-                                                     
-                                    
- 
-                                                              
-                    
-                                              
-                           
-                                                                      
-                                                                        
-                                                       
-                                    
-                     
-               
-                               
-
 	#	#  Les compétences	#	#	
 	c.showPage()
 	add_header_image(c)
@@ -399,9 +293,45 @@ def generate_pdf_with_title_and_comments(input_excel_path, first_page_text, imag
 	titre='Top 5 des compétences où je me sur-evalue le plus'
 	type='sur'
 	y_position=generate_top_5_evaluation(input_excel_path,page_width,y_position,c,y_position_init,add_header_image,custom_color1,custom_color2,titre,type)
-	# Sauvegarder le PDF
+
 	
+	#	#	#	#	#	#	#	#   Debut réponses ouvertes	#	#	#	#	#	#	#	#	#	#
+	#force_col = 44  # Colonne AS
+	#amelioration_col = 45  # Colonne AT
+	#evolution_col = 56  # Colonne AU
+	c.showPage()
+	add_header_image(c)
 	
+	# Titre question ouvertes
+	styles = getSampleStyleSheet()
+	style = styles["BodyText"]  # Utiliser le style BodyText, ou ajustez comme vous le souhaitez
+	style.alignment = TA_CENTER
+	style.fontSize = 14 
+	style.textColor = colors.HexColor("#365B6D") 
+	paragraph_width = 490  
+	text_open = "<b>Analyse qualitative - Questions ouvertes</b><br/><br/>"
+	paragraph = Paragraph(text_open, style)
+	paragraph_width, paragraph_height = paragraph.wrap(paragraph_width, 0)
+	paragraph.drawOn(c, 50, y_position_init-paragraph_height)  
+	y_position=y_position_init-paragraph_height-20
+
+	# Paragraphe explication questions ouvertes
+	style.alignment = TA_LEFT
+	style.fontSize = 10  
+	style.textColor = colors.HexColor("#61A6AB") 
+	paragraph_width = 490  
+	text_open = "<i>Les commentaires repris dans cette section ont été écrits tels quels par les personnes sollicitées. Ils n'ont subi aucune modification, n'ont pas été triés ou classés d'une quelconque manière. " \
+				"Si certains commentaires apparaissent plusieurs fois, cela signifie que plusieurs personnes ont fait le même commentaire.</i><br/><br/><br/>"
+	paragraph = Paragraph(text_open, style)
+	paragraph_width, paragraph_height = paragraph.wrap(paragraph_width, 0)
+	paragraph.drawOn(c, 50, y_position-paragraph_height)
+	y_position -= (paragraph_height+10)
+
+	for idx_col in range(42,51):
+		y_position=generate_question_ouverte(c,idx_col,y_position,y_position_init,add_header_image,sheet_2,sheet_1,categories_2)
+                                              
+
+	# Sauvegarder le PDF	
 	#Fin
 	c.save()
 
